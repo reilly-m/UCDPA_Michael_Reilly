@@ -42,6 +42,19 @@ df_rain_totals = df_rain[['Summer_Total']]
 sorted_df = df_rain_totals.sort_values(by='Summer_Total' , ascending=False )
 print(sorted_df.iloc[0:10,0:1])
 
+# Inter Quartile Range
+import numpy as np
+q75, q25 = np.percentile(df_rain['Annual_Total'], [75,25])
+iqr = q75 - q25
+print("Inter Quartile Range  " + str(iqr))
+
+# Box Plot Total Rain
+import matplotlib.pyplot as plt
+column = df_rain["Annual_Total"]
+plt.boxplot(column)
+plt.show()
+
+
 # Graph Total Annual Rainfall 1850 - 2010
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -136,7 +149,6 @@ plt.xlabel("Year")
 plt.ylabel("Annual Rainfall in mm")
 plt.legend()
 plt.show()
-
 
 
 
